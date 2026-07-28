@@ -28,7 +28,7 @@ Think of this repo as one half of a **pair**: I do all the actual hacking, decod
 
 ---
 
-## � Me + GitHub Copilot: how this pair works
+## 👥 Me + GitHub Copilot: how this pair works
 
 The hacking is **mine** — the OSINT pivots, the decoding, the prompt-injection on VERA, the calls on what a clue means. What I hand off to my **[GitHub Copilot](https://github.com/features/copilot)** agent (agent mode in VS Code) is the grunt work and the online research I'd rather not do by hand, and I log it all here so the journey is reproducible:
 
