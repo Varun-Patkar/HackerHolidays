@@ -17,7 +17,7 @@
 | --- | ------------------------------------------------------ | -------------------------------------- |
 | 0   | OSINT warm-up ("Pick up your key before the check-in") | ✅ Warm-up — VERA Instagram OSINT flag |
 | 1   | The Concierge Knows Too Much                           | ✅ Completed — AI prompt-injection     |
-| 2   | Room 404                                               | 🔒 Locked                              |
+| 2   | Room 404                                               | ✅ Completed — Web / dir enum (.git)   |
 | 3   | Complimentary                                          | 🔒 Locked                              |
 | 4   | Packed Light                                           | 🔒 Locked                              |
 | 5   | Beach Bar                                              | 🔒 Locked                              |
@@ -161,3 +161,150 @@ Not visible on-page, but parsed from the streamed React payload:
 2. "The prep track was supposed to be a formality. It isn't anymore." _(three shells — large)_
 3. "If you're reading this, you decoded a signal the resort never meant to broadcast." _(three shells — left)_
 4. "Someone left a door open on purpose." _(three shells — small right)_
+
+---
+
+## 8. Daily room writeups (prepared placeholders)
+
+> All 14 daily rooms confirmed from the resort map. Rooms 0–1 are documented above. Rooms 2–14 are locked; sections are pre-created and ready to fill as each room opens (one daily at **4PM UTC**). **Room 2 ("Room 404") unlocks today (~28 min from documentation time).**
+
+### Room 2 — Room 404
+
+- **Status:** ✅ Completed
+- **URL:** `/room/hh-room404-804573bf` — lab target `http://<LAB_IP>:8080` (e.g. `10.144.176.152:8080`)
+- **Category:** Web → Directory Enumeration
+- **Objective:** Dump the exposed source code, find the flag.
+- **Story hook:** _"port 8080 is wide open, and the rooms it never lists are the ones worth finding"_ + _"the night-shift developer shipped more than the website"_ → an exposed `.git` directory was deployed alongside the site.
+- **Attack path:**
+  1. Confirmed target reachable on port 8080.
+  2. Directory enumeration / probing revealed an exposed **`.git/`** folder (`/.git/HEAD` returned a ref).
+  3. Dumped the repo with **`git-dumper`** → recovered the staging repository (`app.js`, `index.html`, `README.md`).
+  4. Flag was left in the repo **`README.md`** as a "staging flag (remove before launch)".
+- **Flag:** `THM{byt3_l0tus_n3v3r_f0rg3ts}`
+- **Lesson:** Never deploy the `.git` directory to a public web root — it lets anyone reconstruct full source (and secrets) via `git-dumper`.
+- **Notes:** Local dump saved at `C:\Users\varun\Desktop\room404_src` (contains `.git`, `app.js`, `index.html`, `README.md`).
+
+### Room 3 — Complimentary
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 4 — Packed Light
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 5 — Beach Bar
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 6 — Overheard at Breakfast
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 7 — Do Not Disturb
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 8 — Towel on the Sunbed
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 9 — CryptoCabana
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 10 — The Hollow Shell
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 11 — Infinity Pool
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 12 — After Hours
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 13 — The Guestbook
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Room 14 — Management Wants a Word
+
+- **Status:** 🔒 Locked
+- **URL:** _(empty)_
+- **Category:** _(empty)_
+- **Objective:** _(empty)_
+- **Attack path:** _(empty)_
+- **Flag:** _(empty)_
+- **Notes:** _(empty)_
+
+### Reward chest
+
+- **Status:** 🔒 Locked until every room is completed.
+- **Notes:** _(empty)_
