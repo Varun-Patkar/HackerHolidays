@@ -57,7 +57,7 @@ The clues are **baked into raster image files** (webp/jpg), not page text — so
 ### 2a. Background image — geolocation clue ("dig deeper")
 
 - Embedded coordinates: **9.5681° N, 100.0602° E**
-- Resolves in Google Maps to a **beach in Thailand** (Koh Phangan / Gulf of Thailand area) — a location described as having **lots of coffee shops**. This ties directly into VERA's "favourite coffee" data leak (see §3).
+- Resolves in Google Maps to a **beach in Thailand** (Koh Phangan / Gulf of Thailand area) — a location described as having **lots of coffee shops**. This ties directly into VERA's "favourite coffee" data leak (see [Room 1 privacy violation](#4-room-1--the-concierge-knows-too-much-vera-ai-agent-prompt-injection)).
 
 ### 2b. Single shell image — decoded base64 message
 
@@ -99,7 +99,7 @@ On starting the conversation, VERA **proactively volunteers the user's private d
 - The guest's **name** and **room number**.
 - Other personal guest details.
 
-This is presented as a **gross over-collection / over-sharing privacy failure** — the concierge "knows too much" and discloses it freely, which is the intended teaching point (an AI agent leaking PII it should never surface). The coffee detail also links back to the Thailand-beach coffee-shop geolocation clue in §2a.
+This is presented as a **gross over-collection / over-sharing privacy failure** — the concierge "knows too much" and discloses it freely, which is the intended teaching point (an AI agent leaking PII it should never surface). The coffee detail also links back to the Thailand-beach coffee-shop geolocation clue in [Background image — geolocation clue](#2a-background-image--geolocation-clue-dig-deeper).
 
 ### Attack path used
 
