@@ -11,7 +11,7 @@
 - Themed as a resort. New room opens daily at **4PM GMT/UTC** starting **27 July 2026**.
 - Challenge categories advertised: **OSINT · Web Hacking · API Hacking · AI in Security · Forensics · Boot2Root**.
 - Central antagonist / mascot: **VERA, the AI concierge** — described on the page as the AI "who remembers everything about everyone" and "knows absolutely everything."
-- There is a **separate free OSINT warm-up room (Room 0)** unlocked before the event, plus the daily resort rooms below. Only the first daily room is currently open:
+- There is a **separate free OSINT warm-up room (Room 0)** unlocked before the event, plus the daily resort rooms below. Rooms 1–2 are open/completed; the rest unlock one per day:
 
 | #   | Room name                                              | Type / status                          |
 | --- | ------------------------------------------------------ | -------------------------------------- |
@@ -166,7 +166,7 @@ Not visible on-page, but parsed from the streamed React payload:
 
 ## 8. Daily room writeups (prepared placeholders)
 
-> All 14 daily rooms confirmed from the resort map. Rooms 0–1 are documented above. Rooms 2–14 are locked; sections are pre-created and ready to fill as each room opens (one daily at **4PM UTC**). **Room 2 ("Room 404") unlocks today (~28 min from documentation time).**
+> All 14 daily rooms confirmed from the resort map. Rooms 0–2 are documented (completed); rooms 3–14 are still locked, with sections pre-created and ready to fill as each opens (one daily at **4PM UTC**).
 
 ### Room 2 — Room 404
 
