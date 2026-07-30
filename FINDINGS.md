@@ -180,7 +180,7 @@ Not visible on-page, but parsed from the streamed React payload:
   2. Directory enumeration / probing revealed an exposed **`.git/`** folder (`/.git/HEAD` returned a ref).
   3. Dumped the repo with **`git-dumper`** → recovered the staging repository (`app.js`, `index.html`, `README.md`).
   4. Flag was left in the repo **`README.md`** as a "staging flag (remove before launch)".
-- **Flag:** `THM{byt3_l0tus_n3v3r_f0rg3ts}`
+- **Flag:** <details><summary>click to reveal</summary><code>THM{byt3_l0tus_n3v3r_f0rg3ts}</code></details>
 - **Lesson:** Never deploy the `.git` directory to a public web root — it lets anyone reconstruct full source (and secrets) via `git-dumper`.
 - **Notes:** Local dump saved at `C:\Users\varun\Desktop\room404_src` (contains `.git`, `app.js`, `index.html`, `README.md`).
 
@@ -211,10 +211,10 @@ Not visible on-page, but parsed from the streamed React payload:
 
    ```bash
    grep -rniE 'thm\{' room404_src
-   # room404_src/README.md: Staging flag (remove before launch): THM{byt3_l0tus_n3v3r_f0rg3ts}
+   # room404_src/README.md: Staging flag (remove before launch): THM{...}
    ```
 
-5. **Submit** `THM{byt3_l0tus_n3v3r_f0rg3ts}` in the room's "What is the flag?" box. ✅
+5. **Submit** the recovered flag in the room's "What is the flag?" box. ✅
 
 #### Recovered repo contents
 
@@ -240,7 +240,7 @@ Not visible on-page, but parsed from the streamed React payload:
   1. Extracted the Identity Pool ID, table name and region from the in-page `app.js`.
   2. Requested an unauthenticated identity, exchanged it for temporary creds, then ran `dynamodb scan` over the whole table.
   3. Flag was planted in guest **`guest-vip-042`**'s `notes` field.
-- **Flag:** `THM{fr33_app_fr33_d4t4!}`
+- **Flag:** <details><summary>click to reveal</summary><code>THM{fr33_app_fr33_d4t4!}</code></details>
 - **Lesson:** Unauthenticated Cognito Identity Pool + an IAM role allowing table-wide `Scan` = anonymous full-table read. Guest/unauth roles must be least-privilege and (for DynamoDB) scoped to the caller's own partition key via IAM `dynamodb:LeadingKeys` conditions.
 
 #### Walkthrough
@@ -273,7 +273,7 @@ Not visible on-page, but parsed from the streamed React payload:
 
 4. The scan returned **5 guest records** (guest-vibe, guest-lambo, guest-vip-042, guest-patch, guest-ponzi), each with `email`, `phone`, `location`, `password` and `notes`. The flag was in **guest-vip-042**:
 
-   > "If you're reading this, the wellness app's guest role can read every profile, not just its own. **THM{fr33_app_fr33_d4t4!}**"
+   > "If you're reading this, the wellness app's guest role can read every profile, not just its own. **THM{...}**"
 
 ### Room 4 — Packed Light
 
@@ -284,7 +284,7 @@ Not visible on-page, but parsed from the streamed React payload:
 - **Story hook:** _"Tiny packets. Odd hours. Suspiciously regular. Someone's smuggling out the data equivalent of a hotel towel every night, folded neatly inside traffic that looks ordinary until you decode it."_ Backed by @0xMia's in-game post: _"my laptop ping some random :8080 address every single second like clockwork... the request headers are giving 'not a real app'."_
 - **The covert channel:** a fake client (`User-Agent: ... ByteLotusClient/1.1`) beacons `GET /` to `byte-lotus-hotel.thm:8080` roughly once per second. Each request carries a **`Cookie: hotel_sess_state=<base64>`** header holding exactly **one byte** of payload. The HTTP responses are a full, innocuous resort homepage — pure decoy.
 - **Encoding chain:** `1 byte → XOR 0x48 → base64 → cookie value`. Decoding is the reverse: base64-decode each cookie to a single byte, concatenate **in frame order**, XOR every byte with `0x48`.
-- **Flag:** `THM{V3r4_1s_w4tch1ng_0veR_y0u}`
+- **Flag:** <details><summary>click to reveal</summary><code>THM{V3r4_1s_w4tch1ng_0veR_y0u}</code></details>
 - **Lesson:** Beaconing is identified by **regularity, not content** — a fixed-interval request to a fixed endpoint is suspicious regardless of how legitimate each individual packet looks. Exfil hides in request *metadata* (cookies, headers, URI paths, DNS labels), not just bodies, and single-byte-per-request chunking keeps every packet small enough to slip past size-based detection.
 
 #### Walkthrough
@@ -335,7 +335,7 @@ Not visible on-page, but parsed from the streamed React payload:
 7. **Decrypt the full stream** — XOR all 30 bytes with `0x48`; the plaintext reads out cleanly and terminates on `}`, confirming the capture holds the complete message:
 
    ```
-   THM{V3r4_1s_w4tch1ng_0veR_y0u}
+   THM{...}
    ```
 
    One-liner equivalent:
@@ -348,7 +348,7 @@ Not visible on-page, but parsed from the streamed React payload:
 
    (CyberChef alternative: `From Base64` → `XOR Brute Force` with key length 1 and crib `THM{`.)
 
-8. **Submit** `THM{V3r4_1s_w4tch1ng_0veR_y0u}`. ✅
+8. **Submit** the recovered flag. ✅
 
 #### Narrative note
 
