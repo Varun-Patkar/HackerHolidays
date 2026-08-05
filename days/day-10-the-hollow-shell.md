@@ -25,6 +25,8 @@
   - **Extension allow-lists on *declared* assets are meaningless if you extract *every* entry anyway** — the manifest checked declared asset types, but `extract_shell` wrote the whole `namelist()`.
   - **Defence-in-depth mattered here:** even with no egress and a nologin service account, source disclosure + local file write was enough. Least-privilege the worker, sandbox it, and don't co-locate a web-writable dir with a code runner.
 
+> **Personal note / time sink:** I burned about **an hour** on the `hooks` distraction — every flavour of "hook gymnastics" (command strings, dict shapes, key-name guessing, different working dirs, callbacks) trying to make the manifest execute something. None of it mattered; the web app never touches that field. The moment it clicked to **just read the source** (`/shells/..%2fapp.py`), the whole thing unravelled instantly: the LFI showed the unused `hooks/` dir, the separate `theme_worker.py`, and the intended path. Lesson: **when the front door won't budge and you have any read primitive, read the source before inventing more theories.**
+
 ## Walkthrough
 
 ```bash
