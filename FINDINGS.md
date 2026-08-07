@@ -29,7 +29,7 @@
 | 9   | CryptoCabana                                           | ✅ Completed — Cloud / Azure Storage SAS leak → Key Vault secret versioning | [day-9](days/day-9-cryptocabana.md) |
 | 10  | The Hollow Shell                                       | ✅ Completed — Web / Zip-Slip + LFI → worker RCE | [day-10](days/day-10-the-hollow-shell.md) |
 | 11  | Infinity Pool                                          | ✅ Completed — Boot2Root / cmd injection → chisel pivot → FreePBX UCP → root argument injection | [day-11](days/day-11-infinity-pool.md) |
-| 12  | After Hours                                            | 🔒 Locked                              | — |
+| 12  | After Hours                                            | ✅ Completed — Forensics / WMI persistence → rogue class ConfigData → .NET payload | [day-12](days/day-12-after-hours.md) |
 | 13  | The Guestbook                                          | 🔒 Locked                              | — |
 | 14  | Management Wants a Word                                | 🔒 Locked                              | — |
 | —   | Reward chest                                           | 🔒 Locked until all rooms completed    | — |
@@ -93,8 +93,9 @@ Each room's full writeup — objective, story hook, attack path, flag (spoiler-t
 | 9 | CryptoCabana | Cloud / Azure SAS leak → Key Vault versioning | [day-9-cryptocabana.md](days/day-9-cryptocabana.md) |
 | 10 | The Hollow Shell | Web / Zip-Slip + traversal LFI → theme-worker RCE | [day-10-the-hollow-shell.md](days/day-10-the-hollow-shell.md) |
 | 11 | Infinity Pool | Boot2Root / cmd injection → chisel pivot → FreePBX UCP → root arg injection | [day-11-infinity-pool.md](days/day-11-infinity-pool.md) |
+| 12 | After Hours | Forensics / WMI Event Subscription persistence → rogue class `ConfigData` → embedded .NET payload | [day-12-after-hours.md](days/day-12-after-hours.md) |
 
-**Locked (not yet released):** Room 12 — After Hours · Room 13 — The Guestbook · Room 14 — Management Wants a Word · Reward chest (unlocks once every room is completed). Day files will be added as each opens (one daily at **4PM UTC**).
+**Locked (not yet released):** Room 13 — The Guestbook · Room 14 — Management Wants a Word · Reward chest (unlocks once every room is completed). Day files will be added as each opens (one daily at **4PM UTC**).
 
 ---
 
