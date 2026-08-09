@@ -31,7 +31,7 @@
 | 11  | Infinity Pool                                          | ✅ Completed — Boot2Root / cmd injection → chisel pivot → FreePBX UCP → root argument injection | [day-11](days/day-11-infinity-pool.md) |
 | 12  | After Hours                                            | ✅ Completed — Forensics / WMI persistence → rogue class ConfigData → .NET payload | [day-12](days/day-12-after-hours.md) |
 | 13  | The Guestbook                                       | ✅ Completed — AI / indirect prompt-injection → override RCE | [day-13](days/day-13-the-guestbook.md) |
-| 14  | Management Wants a Word                                | 🔒 Locked                              | — |
+| 14  | Management Wants a Word                                | ✅ Completed — Forensics / DPAPI recovery → Chrome saved password → VeraCrypt container → PDF image flag | [day-14](days/day-14-management-wants-a-word.md) |
 | —   | Reward chest                                           | 🔒 Locked until all rooms completed    | — |
 
 - Room 1 URL: **`/room/hh-theconciergeknows-2d7eb4d9`** ("The Concierge Knows Too Much").
